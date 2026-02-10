@@ -438,4 +438,148 @@
 
     });
 
+    document.addEventListener("DOMContentLoaded", function() {
+        const revealBooks = document.querySelectorAll('.reveal-book');
+        if (!revealBooks.length) return;
+
+        const bookObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: "0px 0px -10% 0px"
+        });
+
+        revealBooks.forEach(card => bookObserver.observe(card));
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const letterTargets = document.querySelectorAll('[data-animate-letters]');
+        const wordTargets = document.querySelectorAll('[data-animate-words]');
+
+        // Letters (typewriter)
+        letterTargets.forEach(target => {
+            if (target.dataset.lettersProcessed === 'true') return;
+            const text = target.textContent.replace(/\s+/g, ' ').trim();
+            if (!text) return;
+
+            target.textContent = '';
+            const fragment = document.createDocumentFragment();
+
+            Array.from(text).forEach((char, index) => {
+                const span = document.createElement('span');
+                span.className = 'char';
+                span.textContent = char;
+                span.style.transitionDelay = `${index * 22}ms`;
+                fragment.appendChild(span);
+            });
+
+            target.appendChild(fragment);
+            target.dataset.lettersProcessed = 'true';
+        });
+
+        // If About intro exists, delay the right paragraph until title finishes
+        const aboutTitle = document.getElementById('about-intro-title');
+        const aboutLead = document.getElementById('about-intro-lead');
+        if (aboutTitle && aboutLead) {
+            const charCount = aboutTitle.textContent.length;
+            const totalDelay = Math.max(0, charCount * 22 + 250);
+            aboutLead.dataset.delayMs = String(totalDelay);
+        }
+
+        // Words (staggered)
+        wordTargets.forEach(target => {
+            if (target.dataset.wordsProcessed === 'true') return;
+            const text = target.textContent.trim().replace(/\s+/g, ' ');
+            if (!text) return;
+
+            const baseDelay = parseInt(target.dataset.delayMs || '0', 10);
+            const words = text.split(' ');
+            target.textContent = '';
+            const fragment = document.createDocumentFragment();
+
+            words.forEach((word, index) => {
+                const span = document.createElement('span');
+                span.className = 'word';
+                span.textContent = word;
+                span.style.transitionDelay = `${baseDelay + (index * 40)}ms`;
+                fragment.appendChild(span);
+                if (index < words.length - 1) {
+                    fragment.appendChild(document.createTextNode(' '));
+                }
+            });
+
+            target.appendChild(fragment);
+            target.dataset.wordsProcessed = 'true';
+        });
+
+        if (letterTargets.length) {
+            const letterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.3,
+                rootMargin: "0px 0px -10% 0px"
+            });
+
+            letterTargets.forEach(target => letterObserver.observe(target));
+        }
+
+        if (wordTargets.length) {
+            const wordObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: "0px 0px -10% 0px"
+            });
+
+            wordTargets.forEach(target => wordObserver.observe(target));
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const revealTargets = [
+            '.s-intro',
+            '.pageheader',
+            '.books-grid',
+            '.pageintro',
+            '.pagemain',
+            '.s-pagecontent',
+            '#cta .s-cta__content',
+            '.s-footer'
+        ];
+
+        const nodes = document.querySelectorAll(revealTargets.join(','));
+        if (!nodes.length) return;
+
+        nodes.forEach(node => node.classList.add('page-reveal'));
+
+        const pageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: "0px 0px -10% 0px"
+        });
+
+        nodes.forEach(node => pageObserver.observe(node));
+    });
+
 })(document.documentElement);

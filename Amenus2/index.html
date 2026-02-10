@@ -37,31 +37,45 @@
         </div>
     </div>
 
-    <header class="s-header">
+   <header class="s-header">
 
-        <div class="row s-header__inner width-sixteen-col">
+            <div class="row s-header__inner width-sixteen-col">
 
-            <div class="s-header__block">
+                <div class="s-header__block about-nav-left">
 
-                <div class="s-header__logo header-logo-wrap">
-                    <a href="#top">
-                        <img src="images/amenus_logo.png" alt="Amenus Logo">
-                    </a>
+                   <div class="s-header__logo">
+    <a class="logo" href="#top">
+        <img src="images/amenus_logo.png" alt="Amenus Logo">
+    </a>
+</div>
+                        <ul class="about-nav-links">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="privacy-policy.html">Site & Copyright</a></li>
+                        </ul>
+
+
                 </div>
-
-
-
-            </div>
-            <div class="s-header__contact">
-                <button type="button" class="btn btn--primary s-header__contact-btn" id="openContactModal">
-                    Connect With Me!
-                </button>
-            </div>
-
-        </div>
+                <nav class="s-header__nav">
+                <div class="s-header__contact">
+            <button
+                type="button"
+                class="btn btn--primary s-header__contact-btn"
+                id="openContactModal">
+                Connect With Me!
+            </button>
         </div>
 
-    </header>
+    </nav>
+                <!-- end s-header__block -->
+
+                
+                <!-- end s-header__nav -->
+
+            </div>
+            <!-- end s-header__inner -->
+
+        </header>
+
     <section id="content" class="s-content" style="background-color: var(--color-2-dark);
     background: var(--color-3);">
         <section id="intro" class="s-intro">
@@ -105,7 +119,9 @@
             </div>
         </section>
 
-        <section id="books" class="s-pageheader pageheader pageheader--compact">
+        <section id="books" class="s-pageheader pageheader pageheader--compact"  style="
+    background-color: black;
+">
             <div class="row">
                 <div class="column xl-12 text-">
                     <h1 class="page-title">
@@ -120,14 +136,14 @@
                 <div class="grid-full grid-list-items books-grid">
 
                     <!-- BOOK 01 -->
-                    <div class="grid-list-items__item blog-card">
+                    <div class="grid-list-items__item blog-card reveal-book">
 
                         <!-- IMAGE FIRST -->
-                        <img src="images/books/teach-me-how.jpg" alt="Teach Me How to Lie With My Eyes"
+                        <img class="reveal-cover" src="images/books/teach-me-how.jpg" alt="Teach Me How to Lie With My Eyes"
                             style="max-width:200px; display:block; margin:1rem 0;">
 
                         <!-- TITLE AFTER IMAGE -->
-                        <div class="blog-card__header">
+                        <div class="blog-card__header reveal-text">
                             <div class="blog-card__cat-links">
                                 <a href="#"></a>
                             </div>
@@ -138,13 +154,13 @@
 
                         <!-- CONTENT -->
                         <div class="blog-card__text">
-                            <p>
+                            <p class="reveal-text">
                                 A tender exploration of love, vulnerability, and the quiet truths we hide. This book
                                 lives in the fragile space between what is felt and what is shown, where silence,
-                                glances, and restraint speak louder than words.</p>
+                                glances, and restraint speak louder than words.</p><br>
 
                             <a href="https://books2read.com/u/mgd6vq" target="_blank"
-                                class="btn btn--primary btn--small">
+                                class="btn btn--primary btn--small reveal-btn">
                                 Buy Now
                             </a>
                         </div>
@@ -153,14 +169,14 @@
 
 
                     <!-- BOOK 02 -->
-                    <div class="grid-list-items__item blog-card">
+                    <div class="grid-list-items__item blog-card reveal-book">
 
                         <!-- IMAGE FIRST -->
-                        <img src="images/books/in-silence-she-comes.jpg" alt="In Silence She Comes"
+                        <img class="reveal-cover" src="images/books/in-silence-she-comes.jpg" alt="In Silence She Comes"
                             style="max-width:200px; display:block; margin:1rem 0;">
 
                         <!-- TITLE AFTER IMAGE -->
-                        <div class="blog-card__header">
+                        <div class="blog-card__header reveal-text">
                             <div class="blog-card__cat-links">
                                 <a href="#"></a>
                             </div>
@@ -171,14 +187,14 @@
 
                         <!-- CONTENT -->
                         <div class="blog-card__text">
-                            <p>
+                            <p class="reveal-text">
                                 A quiet meditation on longing, resilience, and the power of restraint. This story moves
                                 through still moments and unspoken emotions, following a woman whose presence is felt
                                 deeply not through sound or spectacle, but through calm strength and deliberate silence.
                             </p>
 
                             <a href="https://books2read.com/u/3yyJOn" target="_blank"
-                                class="btn btn--primary btn--small">
+                                class="btn btn--primary btn--small reveal-btn">
                                 Buy Now
                             </a>
                         </div>
